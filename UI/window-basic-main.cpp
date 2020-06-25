@@ -1842,12 +1842,15 @@ void OBSBasic::OBSInit()
 #if !defined(_WIN32) && !defined(__APPLE__)
 	delete ui->actionShowCrashLogs;
 	delete ui->actionUploadLastCrashLog;
-	delete ui->menuCrashLogs;
 	delete ui->actionCheckForUpdates;
 	ui->actionShowCrashLogs = nullptr;
 	ui->actionUploadLastCrashLog = nullptr;
-	ui->menuCrashLogs = nullptr;
 	ui->actionCheckForUpdates = nullptr;
+#endif
+
+#ifndef _WIN32
+	delete ui->menuCrashLogs;
+	ui->menuCrashLogs = nullptr;
 #endif
 
 	OnFirstLoad();
